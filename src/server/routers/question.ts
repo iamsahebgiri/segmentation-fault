@@ -1,7 +1,3 @@
-/**
- *
- * This is an example router, you can delete this file and then update `../pages/api/trpc/[trpc].tsx`
- */
 import { Prisma } from '@prisma/client';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
@@ -17,7 +13,6 @@ const defaultQuestionSelect = Prisma.validator<Prisma.QuestionSelect>()({
 });
 
 export const questionRouter = createRouter()
-  // create
   .mutation('add', {
     input: z.object({
       id: z.number().optional(),
@@ -34,7 +29,6 @@ export const questionRouter = createRouter()
       return question;
     },
   })
-  // read
   .query('all', {
     async resolve() {
       /**

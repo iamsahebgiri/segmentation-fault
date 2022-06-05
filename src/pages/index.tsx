@@ -35,7 +35,7 @@ const IndexPage = () => {
       {questionsQuery.data?.map((item) => (
         <article key={item.id}>
           <h3>{item.title}</h3>
-          <Link href={`/post/${item.id}`}>
+          <Link href={`/q/${item.id}`}>
             <a>View more</a>
           </Link>
         </article>
