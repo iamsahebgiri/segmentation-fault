@@ -8,33 +8,30 @@ import { z } from 'zod';
 import { createRouter } from '~/server/createRouter';
 import { prisma } from '~/lib/prisma';
 
-/**
- * Default selector for Post.
- * It's important to always explicitly say which fields you want to return in order to not leak extra information
- * @see https://github.com/prisma/prisma/issues/9353
- */
-const defaultPostSelect = Prisma.validator<Prisma.PostSelect>()({
+const defaultQuestionSelect = Prisma.validator<Prisma.QuestionSelect>()({
   id: true,
   title: true,
-  text: true,
+  content: true,
   createdAt: true,
   updatedAt: true,
 });
 
-export const postRouter = createRouter()
+export const questionRouter = createRouter()
   // create
   .mutation('add', {
     input: z.object({
-      id: z.string().uuid().optional(),
-      title: z.string().min(1).max(32),
-      text: z.string().min(1),
+      id: z.number().optional(),
+      title: z.string().min(1),
+      content: z.string().min(1),
+      contentHtml: z.string(),
+      authorId: z.string(),
     }),
     async resolve({ input }) {
-      const post = await prisma.post.create({
+      const question = await prisma.question.create({
         data: input,
-        select: defaultPostSelect,
+        select: defaultQuestionSelect,
       });
-      return post;
+      return question;
     },
   })
   // read
@@ -45,34 +42,34 @@ export const postRouter = createRouter()
        * @link https://trpc.io/docs/useInfiniteQuery
        */
 
-      return prisma.post.findMany({
-        select: defaultPostSelect,
+      return prisma.question.findMany({
+        select: defaultQuestionSelect,
       });
     },
   })
   .query('byId', {
     input: z.object({
-      id: z.string(),
+      id: z.number(),
     }),
     async resolve({ input }) {
       const { id } = input;
-      const post = await prisma.post.findUnique({
+      const question = await prisma.question.findUnique({
         where: { id },
-        select: defaultPostSelect,
+        select: defaultQuestionSelect,
       });
-      if (!post) {
+      if (!question) {
         throw new TRPCError({
           code: 'NOT_FOUND',
-          message: `No post with id '${id}'`,
+          message: `No question with id '${id}'`,
         });
       }
-      return post;
+      return question;
     },
   })
   // update
   .mutation('edit', {
     input: z.object({
-      id: z.string().uuid(),
+      id: z.number(),
       data: z.object({
         title: z.string().min(1).max(32).optional(),
         text: z.string().min(1).optional(),
@@ -80,22 +77,22 @@ export const postRouter = createRouter()
     }),
     async resolve({ input }) {
       const { id, data } = input;
-      const post = await prisma.post.update({
+      const question = await prisma.question.update({
         where: { id },
         data,
-        select: defaultPostSelect,
+        select: defaultQuestionSelect,
       });
-      return post;
+      return question;
     },
   })
   // delete
   .mutation('delete', {
     input: z.object({
-      id: z.string(),
+      id: z.number(),
     }),
     async resolve({ input }) {
       const { id } = input;
-      await prisma.post.delete({ where: { id } });
+      await prisma.question.delete({ where: { id } });
       return {
         id,
       };

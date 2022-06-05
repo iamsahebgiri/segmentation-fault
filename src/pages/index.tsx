@@ -3,15 +3,8 @@ import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 const IndexPage = () => {
-  const utils = trpc.useContext();
-  const postsQuery = trpc.useQuery(['post.all']);
+  const questionsQuery = trpc.useQuery(['question.all']);
   const { data: session } = useSession();
-  const addPost = trpc.useMutation('post.add', {
-    async onSuccess() {
-      // refetches posts after a post is added
-      await utils.invalidateQueries(['post.all']);
-    },
-  });
 
   // prefetch all posts for instant navigation
   // useEffect(() => {
@@ -22,7 +15,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <h1>Welcome to your tRPC starter!</h1>
+      <h1>Welcome to your Segmentation Fault!</h1>
       {session ? (
         <>
           Signed in as {session?.user?.email} <br />
@@ -35,17 +28,11 @@ const IndexPage = () => {
         </>
       )}
 
-      <p>
-        Check <a href="https://trpc.io/docs">the docs</a> whenever you get
-        stuck, or ping <a href="https://twitter.com/alexdotjs">@alexdotjs</a> on
-        Twitter.
-      </p>
-
       <h2>
-        Posts
-        {postsQuery.status === 'loading' && '(loading)'}
+        Questions
+        {questionsQuery.status === 'loading' && '(loading)'}
       </h2>
-      {postsQuery.data?.map((item) => (
+      {questionsQuery.data?.map((item) => (
         <article key={item.id}>
           <h3>{item.title}</h3>
           <Link href={`/post/${item.id}`}>
@@ -55,49 +42,6 @@ const IndexPage = () => {
       ))}
 
       <hr />
-
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
-          /**
-           * In a real app you probably don't want to use this manually
-           * Checkout React Hook Form - it works great with tRPC
-           * @link https://react-hook-form.com/
-           */
-
-          const $text: HTMLInputElement = (e as any).target.elements.text;
-          const $title: HTMLInputElement = (e as any).target.elements.title;
-          const input = {
-            title: $title.value,
-            text: $text.value,
-          };
-          try {
-            await addPost.mutateAsync(input);
-
-            $title.value = '';
-            $text.value = '';
-          } catch {}
-        }}
-      >
-        <label htmlFor="title">Title:</label>
-        <br />
-        <input
-          id="title"
-          name="title"
-          type="text"
-          disabled={addPost.isLoading}
-        />
-
-        <br />
-        <label htmlFor="text">Text:</label>
-        <br />
-        <textarea id="text" name="text" disabled={addPost.isLoading} />
-        <br />
-        <input type="submit" disabled={addPost.isLoading} />
-        {addPost.error && (
-          <p style={{ color: 'red' }}>{addPost.error.message}</p>
-        )}
-      </form>
     </>
   );
 };
