@@ -1,29 +1,51 @@
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { withTRPC } from '@trpc/next';
-import { NextPage } from 'next';
+import { SessionProvider, signIn, useSession } from 'next-auth/react';
 import { AppProps } from 'next/app';
-import { AppType } from 'next/dist/shared/lib/utils';
-import { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import superjson from 'superjson';
-import { DefaultLayout } from '~/components/defaultLayout';
+import { NextPageWithAuthAndLayout } from '~/lib/types';
 import { AppRouter } from '~/server/routers/_app';
 import { SSRContext } from '~/utils/trpc';
 
-export type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode;
+type AppPropsWithAuthAndLayout = AppProps & {
+  Component: NextPageWithAuthAndLayout;
 };
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout;
-};
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppPropsWithAuthAndLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
 
-const MyApp = (({ Component, pageProps }: AppPropsWithLayout) => {
-  const getLayout =
-    Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>);
+  return (
+    <SessionProvider session={session} refetchOnWindowFocus={false}>
+      {Component.auth ? (
+        <Auth>{getLayout(<Component {...pageProps} />)}</Auth>
+      ) : (
+        getLayout(<Component {...pageProps} />)
+      )}
+    </SessionProvider>
+  );
+}
 
-  return getLayout(<Component {...pageProps} />);
-}) as AppType;
+function Auth({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
+  const isUser = !!session?.user;
+  React.useEffect(() => {
+    if (status === 'loading') return; // Do nothing while loading
+    if (!isUser) signIn(); // If not authenticated, force log in
+  }, [isUser, status]);
+
+  if (isUser) {
+    return <>{children}</>;
+  }
+
+  // Session is being fetched, or no user.
+  // If no user, useEffect() will redirect.
+  return null;
+}
 
 function getBaseUrl() {
   if (typeof window !== 'undefined') {
@@ -34,7 +56,7 @@ function getBaseUrl() {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  // // reference for render.com
+  // reference for render.com
   if (process.env.RENDER_INTERNAL_HOSTNAME) {
     return `http://${process.env.RENDER_INTERNAL_HOSTNAME}:${process.env.PORT}`;
   }
