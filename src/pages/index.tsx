@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 const IndexPage = () => {
-  const questionsQuery = trpc.useQuery(['question.all']);
+  const questionsQuery = trpc.useQuery(['question.feed']);
   const { data: session } = useSession();
 
   // prefetch all posts for instant navigation
@@ -32,7 +32,7 @@ const IndexPage = () => {
         Questions
         {questionsQuery.status === 'loading' && '(loading)'}
       </h2>
-      {questionsQuery.data?.map((item) => (
+      {questionsQuery.data?.questions.map((item) => (
         <article key={item.id}>
           <h3>{item.title}</h3>
           <Link href={`/q/${item.id}`}>

@@ -1,6 +1,4 @@
 // @ts-check
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { env } = require('./src/server/env');
 
 /**
  * Don't be scared of the generics here.
@@ -24,6 +22,6 @@ module.exports = getConfig({
    * @link https://nextjs.org/docs/api-reference/next.config.js/runtime-configuration
    */
   publicRuntimeConfig: {
-    NODE_ENV: env.NODE_ENV,
+    NODE_ENV: process.env.NODE_ENV,
   },
 });

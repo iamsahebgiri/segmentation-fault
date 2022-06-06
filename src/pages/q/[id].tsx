@@ -4,7 +4,7 @@ import { trpc } from '~/utils/trpc';
 
 const QuestionViewPage = () => {
   const id = useRouter().query.id as string;
-  const questionQuery = trpc.useQuery(['question.byId', { id: Number(id) }]);
+  const questionQuery = trpc.useQuery(['question.detail', { id: Number(id) }]);
 
   if (questionQuery.error) {
     return (

@@ -1,5 +1,6 @@
 import { serverEnv } from '~/env/server';
 import { prisma } from '~/lib/prisma';
+import { Role } from '@prisma/client';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import type { NextAuthOptions } from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
@@ -14,7 +15,7 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session, user }) {
-      console.log(user);
+      console.log({ user, session });
       return {
         ...session,
         user: {
@@ -25,24 +26,21 @@ export const authOptions: NextAuthOptions = {
       };
     },
   },
-  // pages: {
-  //   signIn: '/sign-in',
-  // },
   secret: serverEnv.NEXTAUTH_SECRET,
 };
 
-// declare module 'next-auth' {
-//   interface Session {
-//     user: {
-//       id: string;
-//       name: string;
-//       email: string;
-//       image?: string | null;
-//       role: Role;
-//     };
-//   }
+declare module 'next-auth' {
+  interface Session {
+    user: {
+      id: string;
+      name: string;
+      email: string;
+      image?: string | null;
+      role: Role;
+    };
+  }
 
-//   interface User {
-//     role: Role;
-//   }
-// }
+  interface User {
+    role: Role;
+  }
+}
