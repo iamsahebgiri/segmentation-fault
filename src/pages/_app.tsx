@@ -8,6 +8,7 @@ import superjson from 'superjson';
 import { NextPageWithAuthAndLayout } from '~/lib/types';
 import { AppRouter } from '~/server/routers/_app';
 import { SSRContext } from '~/utils/trpc';
+import '../styles/globals.css';
 
 type AppPropsWithAuthAndLayout = AppProps & {
   Component: NextPageWithAuthAndLayout;

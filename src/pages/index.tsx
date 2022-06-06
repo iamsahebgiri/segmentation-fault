@@ -27,7 +27,7 @@ const IndexPage = () => {
           <button onClick={() => signIn()}>Sign in</button>
         </>
       )}
-
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <h2>
         Questions
         {questionsQuery.status === 'loading' && '(loading)'}

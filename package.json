@@ -6,13 +6,13 @@
     "build": "next build",
     "db-up": "docker-compose up -d",
     "db-seed": "prisma db seed",
-    "db-migrate-dev": "yarn prisma migrate dev",
+    "db-migrate-dev": "npx prisma migrate dev",
     "db-nuke": "docker-compose down --volumes --remove-orphans",
     "dev": "next dev",
     "dx": "run-s db-up db-migrate-dev db-seed dev",
     "start": "next start",
     "lint": "eslint src",
-    "lint-fix": "yarn lint --fix",
+    "lint-fix": "npx lint --fix",
     "test-dev": "start-server-and-test dev 3000 test",
     "test-start": "start-server-and-test start 3000 test",
     "test": "run-s test:*",
@@ -22,7 +22,7 @@
     "postinstall": "prisma generate"
   },
   "prisma": {
-    "seed": "yarn ts-node prisma/seed.ts"
+    "seed": "npx ts-node prisma/seed.ts"
   },
   "prettier": {
     "printWidth": 80,
@@ -55,6 +55,7 @@
     "@types/react": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
     "@typescript-eslint/parser": "^5.14.0",
+    "autoprefixer": "^10.4.7",
     "eslint": "^7.32.0",
     "eslint-config-next": "^12.0.0",
     "eslint-config-prettier": "^8.3.0",
@@ -64,8 +65,10 @@
     "jest": "^27.1.0",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.19.1",
+    "postcss": "^8.4.14",
     "prettier": "^2.5.1",
     "prisma": "^3.7.0",
+    "tailwindcss": "^3.0.24",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.3.0",
     "typescript": "4.4.4"
