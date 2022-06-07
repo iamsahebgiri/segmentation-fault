@@ -1,6 +1,7 @@
 import { trpc } from '~/utils/trpc';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
+import { Button } from '~/components/button';
 
 const IndexPage = () => {
   const questionsQuery = trpc.useQuery(['question.feed']);
@@ -16,6 +17,7 @@ const IndexPage = () => {
   return (
     <>
       <h1>Welcome to your Segmentation Fault!</h1>
+      <Button variant="primary">Hello</Button>
       {session ? (
         <>
           Signed in as {session?.user?.email} <br />
