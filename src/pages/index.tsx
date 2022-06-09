@@ -2,17 +2,11 @@ import { trpc } from '~/utils/trpc';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { Button } from '~/components/button';
+import { DefaultLayout } from '~/components/default-layout';
 
-const IndexPage = () => {
+const HomePage = () => {
   const questionsQuery = trpc.useQuery(['question.feed']);
   const { data: session } = useSession();
-
-  // prefetch all posts for instant navigation
-  // useEffect(() => {
-  //   for (const { id } of postsQuery.data ?? []) {
-  //     utils.prefetchQuery(['post.byId', { id }]);
-  //   }
-  // }, [postsQuery.data, utils]);
 
   return (
     <>
@@ -48,30 +42,8 @@ const IndexPage = () => {
   );
 };
 
-export default IndexPage;
+HomePage.getLayout = function getLayout(page: React.ReactElement) {
+  return <DefaultLayout>{page}</DefaultLayout>;
+};
 
-/**
- * If you want to statically render this page
- * - Export `appRouter` & `createContext` from [trpc].ts
- * - Make the `opts` object optional on `createContext()`
- *
- * @link https://trpc.io/docs/ssg
- */
-// export const getStaticProps = async (
-//   context: GetStaticPropsContext<{ filter: string }>,
-// ) => {
-//   const ssg = createSSGHelpers({
-//     router: appRouter,
-//     ctx: await createContext(),
-//   });
-//
-//   await ssg.fetchQuery('post.all');
-//
-//   return {
-//     props: {
-//       trpcState: ssg.dehydrate(),
-//       filter: context.params?.filter ?? 'all',
-//     },
-//     revalidate: 1,
-//   };
-// };
+export default HomePage;

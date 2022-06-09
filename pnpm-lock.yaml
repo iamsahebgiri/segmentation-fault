@@ -21,6 +21,7 @@ specifiers:
   '@typescript-eslint/parser': ^5.14.0
   autoprefixer: ^10.4.7
   clsx: ^1.1.1
+  crypto-hash: ^2.0.1
   envsafe: ^2.0.3
   eslint: ^7.32.0
   eslint-config-next: ^12.0.0
@@ -56,6 +57,7 @@ dependencies:
   '@trpc/react': 9.24.0_6u3gonn2tqf6n2b4ttstdly334
   '@trpc/server': 9.24.0
   clsx: 1.1.1
+  crypto-hash: 2.0.1
   envsafe: 2.0.3
   next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
   next-auth: 4.3.4_ef5jwxihqo6n7gxfmzogljlgcm
@@ -1897,6 +1899,11 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  /crypto-hash/2.0.1:
+    resolution: {integrity: sha512-t4mkp7Vh6MuCZRBf0XLzBOfhkH3nW6YEAotMDSjshVQ1GffCMGdPLSr7pKH0rdXY02jTjAZ7QW2apD0buaZXcQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
 
   /cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}

@@ -24,4 +24,7 @@ module.exports = getConfig({
   publicRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
   },
+  images: {
+    domains: ['res.cloudinary.com', 'avatars.githubusercontent.com'],
+  },
 });
