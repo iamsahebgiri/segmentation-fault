@@ -1,10 +1,11 @@
+import React from 'react';
+import { SessionProvider, signIn, useSession } from 'next-auth/react';
+import { AppProps } from 'next/app';
+import superjson from 'superjson';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { withTRPC } from '@trpc/next';
-import { SessionProvider, signIn, useSession } from 'next-auth/react';
-import { AppProps } from 'next/app';
-import React from 'react';
-import superjson from 'superjson';
+import { Toaster } from 'react-hot-toast';
 import { NextPageWithAuthAndLayout } from '~/lib/types';
 import { AppRouter } from '~/server/routers/_app';
 import { SSRContext } from '~/utils/trpc';
@@ -22,11 +23,14 @@ function MyApp({
 
   return (
     <SessionProvider session={session} refetchOnWindowFocus={false}>
-      {Component.auth ? (
-        <Auth>{getLayout(<Component {...pageProps} />)}</Auth>
-      ) : (
-        getLayout(<Component {...pageProps} />)
-      )}
+      <>
+        {Component.auth ? (
+          <Auth>{getLayout(<Component {...pageProps} />)}</Auth>
+        ) : (
+          getLayout(<Component {...pageProps} />)
+        )}
+        <Toaster />
+      </>
     </SessionProvider>
   );
 }

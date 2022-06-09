@@ -160,7 +160,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
                     ) : null}
 
                     {session ? (
-                      <ButtonLink href="/new" className="ml-6">
+                      <ButtonLink href="/ask" className="ml-6">
                         Ask Question
                       </ButtonLink>
                     ) : (

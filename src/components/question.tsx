@@ -9,20 +9,21 @@ import moreVertical24Regular from '@iconify/icons-fluent/more-vertical-24-regula
 import bookmark24Regular from '@iconify/icons-fluent/bookmark-24-regular';
 import code24Regular from '@iconify/icons-fluent/code-24-regular';
 import flag24Regular from '@iconify/icons-fluent/flag-24-regular';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { classNames } from '~/lib/classnames';
 import { HtmlView } from './html-view';
+import { Avatar } from './avatar';
 
 export default function Question({
   id,
   title,
-  body,
+  contentHtml,
   replies,
   views,
   likes,
   author,
   href,
-  datetime,
-  date,
+  createdAt,
 }: any) {
   return (
     <li className="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
@@ -30,11 +31,7 @@ export default function Question({
         <div>
           <div className="flex space-x-3">
             <div className="flex-shrink-0">
-              <img
-                className="h-10 w-10 rounded-full"
-                src={author.imageUrl}
-                alt=""
-              />
+              <Avatar name={author.name} src={author.image} />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-gray-900">
@@ -44,7 +41,9 @@ export default function Question({
               </p>
               <p className="text-sm text-gray-500">
                 <a href={href} className="hover:underline">
-                  <time dateTime={datetime}>{date}</time>
+                  <time dateTime={createdAt.toISOString()}>
+                    {formatDistanceToNow(createdAt)} ago
+                  </time>
                 </a>
               </p>
             </div>
@@ -145,8 +144,8 @@ export default function Question({
             {title}
           </h2>
         </div>
-        <HtmlView html={body} className="mt-2" />
-        <div className="mt-6 flex justify-between space-x-8">
+        <HtmlView html={contentHtml} className="mt-2" />
+        {/* <div className="mt-6 flex justify-between space-x-8">
           <div className="flex space-x-6">
             <span className="inline-flex items-center text-sm">
               <button
@@ -207,7 +206,7 @@ export default function Question({
               </button>
             </span>
           </div>
-        </div>
+        </div> */}
       </article>
     </li>
   );
