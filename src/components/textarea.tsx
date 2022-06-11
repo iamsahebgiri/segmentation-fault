@@ -30,7 +30,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={id || name}
           name={name}
           className={classNames(
-            'shadow-sm focus:ring-red-500 focus:border-red-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md',
+            'shadow-sm focus:ring-brand-500 focus:border-brand-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md',
             className,
           )}
         />

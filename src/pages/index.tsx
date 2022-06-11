@@ -25,7 +25,7 @@ const HomePage = () => {
             </label>
             <select
               id="question-tabs"
-              className="block w-full rounded-md border-gray-300 text-base font-medium text-gray-900 shadow-sm focus:border-red-500 focus:ring-red-500"
+              className="block w-full rounded-md border-gray-300 text-base font-medium text-gray-900 shadow-sm focus:border-brand-500 focus:ring-brand-500"
               defaultValue={tabs.find((tab) => tab.current)?.name}
             >
               {tabs.map((tab) => (
@@ -56,7 +56,7 @@ const HomePage = () => {
                   <span
                     aria-hidden="true"
                     className={classNames(
-                      tab.current ? 'bg-red-500' : 'bg-transparent',
+                      tab.current ? 'bg-brand-500' : 'bg-transparent',
                       'absolute inset-x-0 bottom-0 h-0.5',
                     )}
                   />

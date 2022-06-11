@@ -34,7 +34,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
           name={name}
           type={type}
           className={classNames(
-            'mt-1 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md',
+            'mt-1 focus:ring-brand-500 focus:border-brand-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md',
             className,
           )}
         />

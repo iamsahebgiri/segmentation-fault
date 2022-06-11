@@ -15,7 +15,7 @@
 ## Todo
 
 Must have features right now
-- [ ] Create question
+- [x] Create question
 - [ ] Delete question
 - [ ] Retrieve question
 - [ ] Edit question
