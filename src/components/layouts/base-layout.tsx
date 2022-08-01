@@ -9,6 +9,7 @@ import ribbon24Regular from '@iconify/icons-fluent/ribbon-24-regular';
 import search24Regular from '@iconify/icons-fluent/search-24-regular';
 import { Icon } from '@iconify/react';
 import { signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { ButtonLink } from '~/components/button-link';
@@ -21,14 +22,8 @@ import {
   MenuItemsContent,
 } from '~/components/menu';
 import { classNames } from '~/lib/classnames';
-import { Avatar } from './avatar';
+import { Avatar } from '~/components/avatar';
 
-// const user = {
-//   name: 'Chelsea Hagon',
-//   email: 'chelseahagon@example.com',
-//   imageUrl:
-//     'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-// };
 const navigation = [
   { name: 'Home', href: '#', icon: home24Regular, current: true },
   { name: 'Popular', href: '#', icon: ribbon24Regular, current: false },
@@ -46,9 +41,9 @@ const userNavigation = [
   { name: 'Sign out', href: '#' },
 ];
 
-type DefaultLayoutProps = { children: ReactNode };
+type BaseLayoutProps = { children: ReactNode };
 
-export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+export const BaseLayout = ({ children }: BaseLayoutProps) => {
   const { data: session } = useSession();
   const user = session?.user;
   return (
@@ -70,13 +65,15 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
                 <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
-                      <a href="#">
-                        <img
-                          className="block h-8 w-auto"
-                          src="https://tailwindui.com/img/logos/workflow-mark.svg?color=red&shade=500"
-                          alt="Workflow"
-                        />
-                      </a>
+                      <Link href="/">
+                        <a>
+                          <img
+                            className="block h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/workflow-mark.svg?color=red&shade=500"
+                            alt="Workflow"
+                          />
+                        </a>
+                      </Link>
                     </div>
                   </div>
                   <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-6">
@@ -256,11 +253,7 @@ export const DefaultLayout = ({ children }: DefaultLayoutProps) => {
           )}
         </Popover>
 
-        <div className="py-10">
-          <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
-            {children}
-          </div>
-        </div>
+        {children}
       </div>
 
       {process.env.NODE_ENV !== 'production' && (

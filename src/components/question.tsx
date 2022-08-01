@@ -13,6 +13,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 import { classNames } from '~/lib/classnames';
 import { HtmlView } from './html-view';
 import { Avatar } from './avatar';
+import Link from 'next/link';
 
 export default function Question({
   id,
@@ -26,7 +27,7 @@ export default function Question({
   createdAt,
 }: any) {
   return (
-    <li className="bg-white px-4 py-6 shadow sm:p-6 sm:rounded-lg">
+    <li className="bg-white px-4 py-6 shadow-sm sm:p-6 sm:rounded-lg">
       <article aria-labelledby={'question-title-' + id}>
         <div>
           <div className="flex space-x-3">
@@ -103,6 +104,26 @@ export default function Question({
                             )}
                           >
                             <Icon
+                              icon={shareAndroid24Regular}
+                              className="mr-3 h-5 w-5 text-gray-400"
+                              aria-hidden="true"
+                            />
+                            <span>Share</span>
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a
+                            href="#"
+                            className={classNames(
+                              active
+                                ? 'bg-gray-100 text-gray-900'
+                                : 'text-gray-700',
+                              'flex px-4 py-2 text-sm',
+                            )}
+                          >
+                            <Icon
                               icon={code24Regular}
                               className="mr-3 h-5 w-5 text-gray-400"
                               aria-hidden="true"
@@ -137,20 +158,24 @@ export default function Question({
               </Menu>
             </div>
           </div>
-          <h2
-            id={'question-title-' + id}
-            className="mt-4 text-base font-semibold text-gray-900"
-          >
-            {title}
-          </h2>
+          <Link href={`/q/${id}`}>
+            <a>
+              <h2
+                id={'question-title-' + id}
+                className="mt-4 text-base font-semibold text-gray-900"
+              >
+                {title}
+              </h2>
+            </a>
+          </Link>
         </div>
         <HtmlView html={contentHtml} className="mt-2" />
-        {/* <div className="mt-6 flex justify-between space-x-8">
-          <div className="flex space-x-6">
+        <div className="mt-6 flex justify-between space-x-8">
+          <div className="flex space-x-4">
             <span className="inline-flex items-center text-sm">
               <button
                 type="button"
-                className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
+                className="inline-flex space-x-2 text-gray-400 border p-2 px-3 rounded-full hover:text-gray-500"
               >
                 <Icon
                   icon={heart24Regular}
@@ -158,21 +183,21 @@ export default function Question({
                   aria-hidden="true"
                 />
 
-                <span className="font-medium text-gray-900">{likes}</span>
+                <span className="font-medium text-gray-900">12</span>
                 <span className="sr-only">likes</span>
               </button>
             </span>
             <span className="inline-flex items-center text-sm">
               <button
                 type="button"
-                className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
+                className="inline-flex space-x-2 border p-2 px-3 rounded-full text-gray-400 hover:text-gray-500"
               >
                 <Icon
                   icon={comment24Regular}
                   className="h-5 w-5"
                   aria-hidden="true"
                 />
-                <span className="font-medium text-gray-900">{replies}</span>
+                <span className="font-medium text-gray-900">{12}</span>
                 <span className="sr-only">replies</span>
               </button>
             </span>
@@ -186,27 +211,12 @@ export default function Question({
                   className="h-5 w-5"
                   aria-hidden="true"
                 />
-                <span className="font-medium text-gray-900">{views}</span>
+                <span className="font-medium text-gray-900">{12}</span>
                 <span className="sr-only">views</span>
               </button>
             </span>
           </div>
-          <div className="flex text-sm">
-            <span className="inline-flex items-center text-sm">
-              <button
-                type="button"
-                className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
-              >
-                <Icon
-                  icon={shareAndroid24Regular}
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-                <span className="font-medium text-gray-900">Share</span>
-              </button>
-            </span>
-          </div>
-        </div> */}
+        </div>
       </article>
     </li>
   );

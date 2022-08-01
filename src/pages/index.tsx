@@ -1,9 +1,7 @@
 import { trpc } from '~/utils/trpc';
-import { DefaultLayout } from '~/components/default-layout';
-import { classNames } from '~/lib/classnames';
 import Question from '~/components/question';
-import Navigation from '~/components/sidebar/navigation';
 import Trendings from '~/components/sidebar/trendings';
+import { MainLayout } from '~/components/layouts/main-layout';
 
 const tabs = [
   { name: 'Recent', href: '#', current: true },
@@ -16,8 +14,8 @@ const HomePage = () => {
 
   return (
     <>
-      <Navigation />
-      <main className="lg:col-span-9 xl:col-span-6">
+      {/* <Navigation /> */}
+      <main className="lg:col-span-9 xl:col-span-8">
         <div className="px-4 sm:px-0">
           <div className="sm:hidden">
             <label htmlFor="question-tabs" className="sr-only">
@@ -33,7 +31,7 @@ const HomePage = () => {
               ))}
             </select>
           </div>
-          <div className="hidden sm:block">
+          {/* <div className="hidden sm:block">
             <nav
               className="relative z-0 rounded-lg shadow flex divide-x divide-gray-200"
               aria-label="Tabs"
@@ -63,9 +61,9 @@ const HomePage = () => {
                 </a>
               ))}
             </nav>
-          </div>
+          </div> */}
         </div>
-        <div className="mt-4">
+        <div className="mt-0">
           <h1 className="sr-only">Recent questions</h1>
           <h2>{questionsQuery.status === 'loading' && '(loading)'}</h2>
           <ul role="list" className="space-y-4">
@@ -81,7 +79,7 @@ const HomePage = () => {
 };
 
 HomePage.getLayout = function getLayout(page: React.ReactElement) {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default HomePage;

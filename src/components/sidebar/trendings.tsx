@@ -21,7 +21,7 @@ export default function Trendings() {
     <aside className="hidden xl:block xl:col-span-4">
       <div className="sticky top-4 space-y-4">
         <section aria-labelledby="trending-heading">
-          <div className="bg-white rounded-lg shadow">
+          <div className="bg-white rounded-lg shadow-sm">
             <div className="p-6">
               <h2
                 id="trending-heading"

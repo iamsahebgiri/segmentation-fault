@@ -2,8 +2,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 import toast from 'react-hot-toast';
-import { DefaultLayout } from '~/components/default-layout';
 import QuestionForm from '~/components/form/question-form';
+import { MainLayout } from '~/components/layouts/main-layout';
 import { trpc } from '~/utils/trpc';
 
 export default function AskQuestionPage() {
@@ -51,5 +51,5 @@ export default function AskQuestionPage() {
 AskQuestionPage.auth = true;
 
 AskQuestionPage.getLayout = function getLayout(page: React.ReactElement) {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return <MainLayout>{page}</MainLayout>;
 };
