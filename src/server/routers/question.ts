@@ -1,17 +1,19 @@
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
-import { createRouter } from '~/server/createRouter';
+import { publicProcedure, protectedProcedure, router } from '../trpc/trpc';
 
-export const questionRouter = createRouter()
-  .query('feed', {
-    input: z
-      .object({
-        take: z.number().min(1).max(50).optional(),
-        skip: z.number().min(1).optional(),
-        authorId: z.string().optional(),
-      })
-      .optional(),
-    async resolve({ input, ctx }) {
+export const questionRouter = router({
+  feed: publicProcedure
+    .input(
+      z
+        .object({
+          take: z.number().min(1).max(50).optional(),
+          skip: z.number().min(1).optional(),
+          authorId: z.string().optional(),
+        })
+        .optional(),
+    )
+    .query(async ({ input, ctx }) => {
       const take = input?.take ?? 50;
       const skip = input?.skip;
 
@@ -69,13 +71,14 @@ export const questionRouter = createRouter()
         questions,
         questionCount,
       };
-    },
-  })
-  .query('detail', {
-    input: z.object({
-      id: z.number(),
     }),
-    async resolve({ ctx, input }) {
+  detail: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
       const { id } = input;
       const question = await ctx.prisma.question.findUnique({
         where: { id },
@@ -146,13 +149,14 @@ export const questionRouter = createRouter()
       }
 
       return question;
-    },
-  })
-  .query('search', {
-    input: z.object({
-      query: z.string().min(1),
     }),
-    async resolve({ input, ctx }) {
+  search: publicProcedure
+    .input(
+      z.object({
+        query: z.string().min(1),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
       const posts = await ctx.prisma.question.findMany({
         take: 10,
         where: {
@@ -167,26 +171,16 @@ export const questionRouter = createRouter()
       });
 
       return posts;
-    },
-  })
-  .middleware(({ ctx, next }) => {
-    if (!ctx.session) {
-      throw new TRPCError({ code: 'UNAUTHORIZED' });
-    }
-
-    return next({
-      ctx: {
-        ...ctx,
-        session: ctx.session,
-      },
-    });
-  })
-  .mutation('add', {
-    input: z.object({
-      title: z.string().min(1),
-      content: z.string().min(1),
     }),
-    async resolve({ ctx, input }) {
+
+  add: protectedProcedure
+    .input(
+      z.object({
+        title: z.string().min(1),
+        content: z.string().min(1),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
       const post = await ctx.prisma.question.create({
         data: {
           title: input.title,
@@ -201,17 +195,19 @@ export const questionRouter = createRouter()
       });
 
       return post;
-    },
-  })
-  .mutation('edit', {
-    input: z.object({
-      id: z.number(),
-      data: z.object({
-        title: z.string().min(1),
-        content: z.string().min(1),
-      }),
     }),
-    async resolve({ ctx, input }) {
+
+  edit: protectedProcedure
+    .input(
+      z.object({
+        id: z.number(),
+        data: z.object({
+          title: z.string().min(1),
+          content: z.string().min(1),
+        }),
+      }),
+    )
+    .query(async ({ input, ctx }) => {
       const { id, data } = input;
 
       const post = await ctx.prisma.question.findUnique({
@@ -241,11 +237,10 @@ export const questionRouter = createRouter()
       });
 
       return updatedPost;
-    },
-  })
-  .mutation('delete', {
-    input: z.number(),
-    async resolve({ input: id, ctx }) {
+    }),
+  delete: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ input: id, ctx }) => {
       const post = await ctx.prisma.question.findUnique({
         where: { id },
         select: {
@@ -265,11 +260,10 @@ export const questionRouter = createRouter()
 
       await ctx.prisma.question.delete({ where: { id } });
       return id;
-    },
-  })
-  .mutation('like', {
-    input: z.number(),
-    async resolve({ input: id, ctx }) {
+    }),
+  like: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ input: id, ctx }) => {
       await ctx.prisma.upvotedQuestions.create({
         data: {
           question: {
@@ -286,11 +280,10 @@ export const questionRouter = createRouter()
       });
 
       return id;
-    },
-  })
-  .mutation('unlike', {
-    input: z.number(),
-    async resolve({ input: id, ctx }) {
+    }),
+  unlike: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ input: id, ctx }) => {
       await ctx.prisma.upvotedQuestions.delete({
         where: {
           questionId_userId: {
@@ -301,5 +294,5 @@ export const questionRouter = createRouter()
       });
 
       return id;
-    },
-  });
+    }),
+});

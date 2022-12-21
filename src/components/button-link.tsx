@@ -35,13 +35,10 @@ export const ButtonLink = React.forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         passHref={passHref}
         prefetch={prefetch}
         locale={locale}
-      >
-        <a
-          {...rest}
-          ref={forwardedRef}
-          className={buttonClasses({ className, variant })}
-        />
-      </Link>
+        {...rest}
+        ref={forwardedRef}
+        className={buttonClasses({ className, variant })}
+      />
     );
   },
 );

@@ -8,7 +8,7 @@ import { trpc } from '~/utils/trpc';
 
 export default function AskQuestionPage() {
   const router = useRouter();
-  const addQuestionMutation = trpc.useMutation('question.add', {
+  const addQuestionMutation = trpc.question.add.useMutation({
     onError: (error) => {
       toast.error(`Something went wrong: ${error.message}`);
     },

@@ -1,7 +1,5 @@
-import NextError from 'next/error';
 import { useRouter } from 'next/router';
 import { AuthorWithDate } from '~/components/author-with-date';
-import { Avatar } from '~/components/avatar';
 import { Banner } from '~/components/banner';
 import { Button } from '~/components/button';
 import { ButtonLink } from '~/components/button-link';
@@ -25,6 +23,11 @@ import {
 } from '~/components/icons';
 // import { LikeButton } from '~/components/like-button';
 // import { MarkdownEditor } from '~/components/markdown-editor';
+import { useSession } from 'next-auth/react';
+import Head from 'next/head';
+import * as React from 'react';
+import toast from 'react-hot-toast';
+import { MainLayout } from '~/components/layouts/main-layout';
 import {
   Menu,
   MenuButton,
@@ -32,13 +35,7 @@ import {
   MenuItems,
   MenuItemsContent,
 } from '~/components/menu';
-import { InferQueryOutput, InferQueryPathAndInput, trpc } from '~/utils/trpc';
-import { useSession } from 'next-auth/react';
-import Head from 'next/head';
-import * as React from 'react';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { MainLayout } from '~/components/layouts/main-layout';
+import { trpc } from '~/utils/trpc';
 
 // const QuestionViewPage = () => {
 //   const id = useRouter().query.id as string;
@@ -84,72 +81,25 @@ import { MainLayout } from '~/components/layouts/main-layout';
 
 // export default QuestionViewPage;
 
-function getPostQueryPathAndInput(
-  id: number,
-): InferQueryPathAndInput<'question.detail'> {
-  return [
-    'question.detail',
-    {
-      id,
-    },
-  ];
-}
-
 const QuestionPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const utils = trpc.useContext();
-  const postQueryPathAndInput = getPostQueryPathAndInput(
-    Number(router.query.id),
-  );
-  const postQuery = trpc.useQuery(postQueryPathAndInput);
-  const likeMutation = trpc.useMutation(['question.like'], {
-    onMutate: async (likedPostId) => {
-      await utils.cancelQuery(postQueryPathAndInput);
+  const postQuery = trpc.question.detail.useQuery({
+    id: Number(router.query.id),
+  });
 
-      const previousPost = utils.getQueryData(postQueryPathAndInput);
-
-      if (previousPost) {
-        utils.setQueryData(postQueryPathAndInput, {
-          ...previousPost,
-          likedBy: [
-            ...previousPost.upvotedBy,
-            { user: { id: session!.user.id, name: session!.user.name } },
-          ],
-        });
-      }
-
-      return { previousPost };
-    },
-    onError: (err, id, context: any) => {
-      if (context?.previousPost) {
-        utils.setQueryData(postQueryPathAndInput, context.previousPost);
-      }
+  const likeMutation = trpc.question.like.useMutation({
+    onError: (error) => {
+      toast.error(`Something went wrong: ${error.message}`);
     },
   });
-  const unlikeMutation = trpc.useMutation(['question.unlike'], {
-    onMutate: async (unlikedPostId) => {
-      await utils.cancelQuery(postQueryPathAndInput);
-
-      const previousPost = utils.getQueryData(postQueryPathAndInput);
-
-      if (previousPost) {
-        utils.setQueryData(postQueryPathAndInput, {
-          ...previousPost,
-          likedBy: previousPost.upvotedBy.filter(
-            (item) => item.user.id !== session!.user.id,
-          ),
-        });
-      }
-
-      return { previousPost };
-    },
-    onError: (err, id, context: any) => {
-      if (context?.previousPost) {
-        utils.setQueryData(postQueryPathAndInput, context.previousPost);
-      }
+  const unlikeMutation = trpc.question.unlike.useMutation({
+    onError: (error) => {
+      toast.error(`Something went wrong: ${error.message}`);
     },
   });
+
   const [isConfirmDeleteDialogOpen, setIsConfirmDeleteDialogOpen] =
     React.useState(false);
   const [isConfirmHideDialogOpen, setIsConfirmHideDialogOpen] =
@@ -699,7 +649,8 @@ function ConfirmDeleteDialog({
 }) {
   const cancelRef = React.useRef<HTMLButtonElement>(null);
   const router = useRouter();
-  const deletePostMutation = trpc.useMutation('question.delete', {
+
+  const deletePostMutation = trpc.question.delete.useMutation({
     onError: (error) => {
       toast.error(`Something went wrong: ${error.message}`);
     },

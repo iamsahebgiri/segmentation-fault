@@ -159,14 +159,12 @@ export default function Question({
             </div>
           </div>
           <Link href={`/q/${id}`}>
-            <a>
-              <h2
-                id={'question-title-' + id}
-                className="mt-4 text-base font-semibold text-gray-900"
-              >
-                {title}
-              </h2>
-            </a>
+            <h2
+              id={'question-title-' + id}
+              className="mt-4 text-base font-semibold text-gray-900"
+            >
+              {title}
+            </h2>
           </Link>
         </div>
         <HtmlView html={contentHtml} className="mt-2" />

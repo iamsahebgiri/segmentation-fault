@@ -10,7 +10,7 @@ const tabs = [
 ];
 
 const HomePage = () => {
-  const questionsQuery = trpc.useQuery(['question.feed']);
+  const questionsQuery = trpc.question.feed.useQuery();
 
   return (
     <>

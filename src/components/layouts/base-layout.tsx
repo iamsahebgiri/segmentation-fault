@@ -66,13 +66,11 @@ export const BaseLayout = ({ children }: BaseLayoutProps) => {
                   <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                     <div className="flex-shrink-0 flex items-center">
                       <Link href="/">
-                        <a>
-                          <img
-                            className="block h-8 w-auto"
-                            src="https://tailwindui.com/img/logos/workflow-mark.svg?color=red&shade=500"
-                            alt="Workflow"
-                          />
-                        </a>
+                        <img
+                          className="block h-8 w-auto"
+                          src="https://tailwindui.com/img/logos/workflow-mark.svg?color=red&shade=500"
+                          alt="Workflow"
+                        />
                       </Link>
                     </div>
                   </div>

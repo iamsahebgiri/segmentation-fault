@@ -52,8 +52,8 @@ function NextLink({
   ...rest
 }: Omit<React.ComponentPropsWithoutRef<'a'>, 'href'> & LinkProps) {
   return (
-    <Link href={href}>
-      <a {...rest}>{children}</a>
+    <Link href={href} {...rest}>
+      {children}
     </Link>
   );
 }
