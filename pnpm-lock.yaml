@@ -6,6 +6,16 @@ specifiers:
   '@iconify/icons-fluent': ^1.2.18
   '@iconify/react': ^4.0.1
   '@jest/types': ^29.3.1
+  '@lexical/clipboard': ^0.7.5
+  '@lexical/code': ^0.7.4
+  '@lexical/link': ^0.7.4
+  '@lexical/list': ^0.7.4
+  '@lexical/markdown': ^0.7.4
+  '@lexical/react': ^0.7.4
+  '@lexical/rich-text': ^0.7.4
+  '@lexical/selection': ^0.7.4
+  '@lexical/table': ^0.7.4
+  '@lexical/utils': ^0.7.4
   '@next-auth/prisma-adapter': ^1.0.5
   '@playwright/test': ^1.29.0
   '@prisma/client': ^4.8.0
@@ -21,6 +31,7 @@ specifiers:
   '@types/node': ^18.11.17
   '@types/react': ^18.0.26
   '@types/react-beforeunload': ^2.1.1
+  '@types/react-dom': ^18.0.9
   '@typescript-eslint/eslint-plugin': ^5.47.0
   '@typescript-eslint/parser': ^5.47.0
   autoprefixer: ^10.4.13
@@ -35,6 +46,7 @@ specifiers:
   eslint-plugin-react: ^7.31.11
   eslint-plugin-react-hooks: ^4.6.0
   jest: ^29.3.1
+  lexical: ^0.7.4
   next: ^13.0.7
   next-auth: ^4.18.6
   npm-run-all: ^4.1.5
@@ -59,6 +71,16 @@ specifiers:
 dependencies:
   '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
   '@heroicons/react': 2.0.13_react@18.2.0
+  '@lexical/clipboard': 0.7.5_lexical@0.7.4
+  '@lexical/code': 0.7.4_lexical@0.7.4
+  '@lexical/link': 0.7.4_lexical@0.7.4
+  '@lexical/list': 0.7.4_lexical@0.7.4
+  '@lexical/markdown': 0.7.4_7mgbns2k47wydlj7ga2glkmmoy
+  '@lexical/react': 0.7.4_2asa6irv43wdk2z6lj5dmq6zpm
+  '@lexical/rich-text': 0.7.4_f4n47ft2rr4lmp4ddwlbqswhzi
+  '@lexical/selection': 0.7.4_lexical@0.7.4
+  '@lexical/table': 0.7.4_lexical@0.7.4
+  '@lexical/utils': 0.7.4_lexical@0.7.4
   '@next-auth/prisma-adapter': 1.0.5_fmf72d7n4jt7coiyftaa4dlrhe
   '@prisma/client': 4.8.0_prisma@4.8.0
   '@radix-ui/react-tooltip': 1.0.2_ib3m5ricvtkl2cll7qpr2f6lvq
@@ -71,6 +93,7 @@ dependencies:
   crypto-hash: 2.0.1
   date-fns: 2.29.3
   envsafe: 2.0.3
+  lexical: 0.7.4
   next: 13.0.7_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.18.6_gvvct4imq5upoiloat43sswrza
   react: 18.2.0
@@ -94,6 +117,7 @@ devDependencies:
   '@types/node': 18.11.17
   '@types/react': 18.0.26
   '@types/react-beforeunload': 2.1.1
+  '@types/react-dom': 18.0.9
   '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
   '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
   autoprefixer: 10.4.13_postcss@8.4.20
@@ -860,6 +884,316 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@lexical/clipboard/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-bqo/dsETC2hTmIUJDoeDX+faFTgkJZHMWkpEzj2o8UwJlgCvyyvkodaa4UPFRdZWRtPtrdU04jPFE3JBqMoIwQ==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/html': 0.7.4_lexical@0.7.4
+      '@lexical/list': 0.7.4_lexical@0.7.4
+      '@lexical/selection': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/clipboard/0.7.5_lexical@0.7.4:
+    resolution: {integrity: sha512-H5KA7CfrCYJs3fcDG2LkG/s5dfT1KcuOxEZwinCE0Quzu4aPxHLWKRXImwNsN/zVU5zTnvjd29Zv2NYtfYfBiA==}
+    peerDependencies:
+      lexical: 0.7.5
+    dependencies:
+      '@lexical/html': 0.7.5_lexical@0.7.4
+      '@lexical/list': 0.7.5_lexical@0.7.4
+      '@lexical/selection': 0.7.5_lexical@0.7.4
+      '@lexical/utils': 0.7.5_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/code/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-zGiRjieFF1N61Ys0snNI1fX2IiknieTVLRN7/aAoUZ448dzgJP8QDq6Q+jnASEjNSd/TW3rfSEWUCstkj2UKpw==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+      prismjs: 1.29.0
+    dev: false
+
+  /@lexical/dragon/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-RjCjqihd3q+Yh1hmXhnkEi5hvFv0eysgcojCH1xQF64CStfld569fRdUWB7ZJgD7lXqBSXcVu+YsOkJ9sLXfRQ==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/hashtag/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-lNL2mSbbJ3jRyIblsW2dBoqupO5s8EfDfjigXqqThtPsb954+X/WB9hfYgH56T9e4LfOflCCZ1XaXMht2+ZWEQ==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/history/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-VLGMsj3OniwhqSUnmTCt155GVPuU84c/3qV4Q8bDWIv6FAwk7i4LX02JQZuX/vlPV/0UuzN68U0k4K3BstnRmA==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/html/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-7O68qw0WyhFJ4v9gIwbIUUAFAfaCvOP9xRBLVomj3IEu59yQTxIFZC9xan7V1CA82s5xJJmXsQcuIOlez2Ugig==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/selection': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/html/0.7.5_lexical@0.7.4:
+    resolution: {integrity: sha512-aHG0pxvVmYvyXstCVmzXpVYR7n3rMUQ6aSCd7fnreJGSxOr/LafT5+8CZQkUm7iR2IiiK8umX8NHzz4cMNgR3Q==}
+    peerDependencies:
+      lexical: 0.7.5
+    dependencies:
+      '@lexical/selection': 0.7.5_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/link/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-Tww85DpkxOmrDlZ+OB3Ou32oZJ0RU3R0nl5fUR9fcn5Zc++3u6T+S6V1TwD8jjL+jHhUO98eXy8PKV+QJOjwFg==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/list/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-rhP2PVTVOE8D/UP/+IWy8jsQ2JdgRg/E8i10wFopS6D7ubkfMMHcAbCADHtxhwbVTjWYWlJMpGEn8RS5vZYCpg==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/list/0.7.5_lexical@0.7.4:
+    resolution: {integrity: sha512-YCDsP0hxIMwjtN3wDKLsFdjrDenX+OdOswm+4Zt/mtLMCOSwibcDDyzWnA7UbR2s4Fwy1Rvhl56xdR2egGCQhw==}
+    peerDependencies:
+      lexical: 0.7.5
+    dependencies:
+      '@lexical/utils': 0.7.5_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/mark/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-xcuPFLmGjSc6S1ENuv6KVjuniM+JlE0aVKpHsmAg/dkQSJMDYJIAr+fj2jG8zTWFuAgyheVWjjA1Xk/Uo/sgdg==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/markdown/0.7.4_7mgbns2k47wydlj7ga2glkmmoy:
+    resolution: {integrity: sha512-i7Ej4aPB8jsq46IKCDa8KPD5XpvxQ0fiZlIDAJfRTb+J71vUNJcKAEicbOay7ipLaWsRfeO+dHL0GM/pivoxqw==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/code': 0.7.4_lexical@0.7.4
+      '@lexical/link': 0.7.4_lexical@0.7.4
+      '@lexical/list': 0.7.4_lexical@0.7.4
+      '@lexical/rich-text': 0.7.4_f4n47ft2rr4lmp4ddwlbqswhzi
+      '@lexical/text': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    transitivePeerDependencies:
+      - '@lexical/clipboard'
+      - '@lexical/selection'
+    dev: false
+
+  /@lexical/markdown/0.7.4_i3lhexhquqf2dmcojk2oi2yn5u:
+    resolution: {integrity: sha512-i7Ej4aPB8jsq46IKCDa8KPD5XpvxQ0fiZlIDAJfRTb+J71vUNJcKAEicbOay7ipLaWsRfeO+dHL0GM/pivoxqw==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/code': 0.7.4_lexical@0.7.4
+      '@lexical/link': 0.7.4_lexical@0.7.4
+      '@lexical/list': 0.7.4_lexical@0.7.4
+      '@lexical/rich-text': 0.7.4_whkowg6lfwegleegsxpm52nkdu
+      '@lexical/text': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    transitivePeerDependencies:
+      - '@lexical/clipboard'
+      - '@lexical/selection'
+    dev: false
+
+  /@lexical/offset/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-+MyLneHUZ7X5C/t291PUg99toeSE5ZosdSoq852WIVBEb7ANcqle9183jx/d9io9f+XClVs1ENTcFJAFE4NVyQ==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/overflow/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-uVGt9pZwESZKTgypvLAfJj5Y9DNxh8/pEj8Axygri0F+RDnbceNO/KvMLMRJtCaPw7KB6ANmeMUJVVxryF+Ybg==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/plain-text/0.7.4_whkowg6lfwegleegsxpm52nkdu:
+    resolution: {integrity: sha512-MxcB28fwuFw+xWLUoN+o/CoakwZ63XfBfpV/x4G10nadO3g4o+gJan2I1E1BCxNV6GUPMA1pBVIE6iqiRJ8+4g==}
+    peerDependencies:
+      '@lexical/clipboard': 0.7.4
+      '@lexical/selection': 0.7.4
+      '@lexical/utils': 0.7.4
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/clipboard': 0.7.4_lexical@0.7.4
+      '@lexical/selection': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/react/0.7.4_2asa6irv43wdk2z6lj5dmq6zpm:
+    resolution: {integrity: sha512-fvORnCTKysib2QPbDfC5qGay4pDoDtwkaKqOrBSUSr3BTH/nyWAf1rA5feQnID5zCRbc8R6PBEjOVs9fk+afVg==}
+    peerDependencies:
+      lexical: 0.7.4
+      react: '>=17.x'
+      react-dom: '>=17.x'
+    dependencies:
+      '@lexical/clipboard': 0.7.4_lexical@0.7.4
+      '@lexical/code': 0.7.4_lexical@0.7.4
+      '@lexical/dragon': 0.7.4_lexical@0.7.4
+      '@lexical/hashtag': 0.7.4_lexical@0.7.4
+      '@lexical/history': 0.7.4_lexical@0.7.4
+      '@lexical/link': 0.7.4_lexical@0.7.4
+      '@lexical/list': 0.7.4_lexical@0.7.4
+      '@lexical/mark': 0.7.4_lexical@0.7.4
+      '@lexical/markdown': 0.7.4_i3lhexhquqf2dmcojk2oi2yn5u
+      '@lexical/overflow': 0.7.4_lexical@0.7.4
+      '@lexical/plain-text': 0.7.4_whkowg6lfwegleegsxpm52nkdu
+      '@lexical/rich-text': 0.7.4_whkowg6lfwegleegsxpm52nkdu
+      '@lexical/selection': 0.7.4_lexical@0.7.4
+      '@lexical/table': 0.7.4_lexical@0.7.4
+      '@lexical/text': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      '@lexical/yjs': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-error-boundary: 3.1.4_react@18.2.0
+    transitivePeerDependencies:
+      - yjs
+    dev: false
+
+  /@lexical/rich-text/0.7.4_f4n47ft2rr4lmp4ddwlbqswhzi:
+    resolution: {integrity: sha512-oBYsunWX5rAPlf+Jggux1WHAmIKur3KID7qS2QethsJDJ8VY6bvIywru5IgsUxKaDvtL/NYqXawum6lt/Rs8Pg==}
+    peerDependencies:
+      '@lexical/clipboard': 0.7.4
+      '@lexical/selection': 0.7.4
+      '@lexical/utils': 0.7.4
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/clipboard': 0.7.5_lexical@0.7.4
+      '@lexical/selection': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/rich-text/0.7.4_whkowg6lfwegleegsxpm52nkdu:
+    resolution: {integrity: sha512-oBYsunWX5rAPlf+Jggux1WHAmIKur3KID7qS2QethsJDJ8VY6bvIywru5IgsUxKaDvtL/NYqXawum6lt/Rs8Pg==}
+    peerDependencies:
+      '@lexical/clipboard': 0.7.4
+      '@lexical/selection': 0.7.4
+      '@lexical/utils': 0.7.4
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/clipboard': 0.7.4_lexical@0.7.4
+      '@lexical/selection': 0.7.4_lexical@0.7.4
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/selection/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-c/uogy6bsO/BgcRvO3mliWUKrzXqvDWBJ6mBFsa8HGVBQiAaP6ZvGHy9aJgwbHi4Sm/gzVE6iHvTipbLHLRy9g==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/selection/0.7.5_lexical@0.7.4:
+    resolution: {integrity: sha512-8AUwsDz/i1fshmRlXUQuDFKcilgzi5GIUc38Lpp7HN5ErvyH7EjbFWA+b8qKWidTnWQ9yKHQLUsIFlYMy91V/Q==}
+    peerDependencies:
+      lexical: 0.7.5
+    dependencies:
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/table/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-ZLLQEuKGDduI+LErKqEJ8XJ9eikEGtN3mjo117yDefoBKH6RyOFIcXVcC5Lic50fvWWhgs73wgG9QloFwdcHzA==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/utils': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/table/0.7.5_lexical@0.7.4:
+    resolution: {integrity: sha512-6hPtEZq+0qOki8vU/sEBL5CHYJ7obt5kbCknEHW3xm38gW7NWMqZ15tvnw1owJnPJNhu4wfCSHPR1JeUHfcJLg==}
+    peerDependencies:
+      lexical: 0.7.5
+    dependencies:
+      '@lexical/utils': 0.7.5_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/text/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-vFha4R+4wOrF8gv4hU12NeQKQtScfMBYdIlXzuSSQnPX5Z3O+XZibPIV0Xbe3SAGlwEZqL7NnuF6QF7hocaD/g==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/utils/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-ZSMQtjM9cajL8DJhRT9I+zemWg+w1m2VhgEISy0QVg3N1OvchuHNebpvcPGI4J88vHWi6IZo8hJlVLfVaWiZJg==}
+    peerDependencies:
+      lexical: 0.7.4
+    dependencies:
+      '@lexical/list': 0.7.4_lexical@0.7.4
+      '@lexical/table': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/utils/0.7.5_lexical@0.7.4:
+    resolution: {integrity: sha512-WGf96y1h1qDsJK9wztXPzcEupyToa4TmoSzSKhOvebFqS/yg3WlRVUBne6oBj3hptjGoeU9MhGdcGK61EQ/TOw==}
+    peerDependencies:
+      lexical: 0.7.5
+    dependencies:
+      '@lexical/list': 0.7.5_lexical@0.7.4
+      '@lexical/table': 0.7.5_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
+  /@lexical/yjs/0.7.4_lexical@0.7.4:
+    resolution: {integrity: sha512-68wd4OuPdRDlBdFBAOaFy4jQ6IXEqXBfgKhq/bicWfsDQuCd77DFGrUZD1zOmYzG9uM3s8eg7AoienyUBOdbrg==}
+    peerDependencies:
+      lexical: 0.7.4
+      yjs: '>=13.5.22'
+    dependencies:
+      '@lexical/offset': 0.7.4_lexical@0.7.4
+      lexical: 0.7.4
+    dev: false
+
   /@next-auth/prisma-adapter/1.0.5_fmf72d7n4jt7coiyftaa4dlrhe:
     resolution: {integrity: sha512-VqMS11IxPXrPGXw6Oul6jcyS/n8GLOWzRMrPr3EMdtD6eOalM6zz05j08PcNiis8QzkfuYnCv49OvufTuaEwYQ==}
     peerDependencies:
@@ -1524,6 +1858,12 @@ packages:
 
   /@types/react-beforeunload/2.1.1:
     resolution: {integrity: sha512-KER+M11lrXhp++tHDm9P7YWaKKBWwNyZkwnHSV3QQXGU2ZcP9x+O0Y7ZDZqGQD1OlGF4P8fmcpll3ol3a8KXsQ==}
+    dependencies:
+      '@types/react': 18.0.26
+    dev: true
+
+  /@types/react-dom/18.0.9:
+    resolution: {integrity: sha512-qnVvHxASt/H7i+XG1U1xMiY5t+IHcPGUK7TDMDzom08xa7e86eCeKOiLZezwCKVxJn6NEiiy2ekgX8aQssjIKg==}
     dependencies:
       '@types/react': 18.0.26
     dev: true
@@ -3956,6 +4296,10 @@ packages:
       type-check: 0.4.0
     dev: true
 
+  /lexical/0.7.4:
+    resolution: {integrity: sha512-4Zk2erCH0PXZEPHVHYcX0ZWNjZ+EWm9Ayp1+gL9U2WCmgqGiG95rVwLSfsULfzBxWpkdeNGRQ34AYYLRs/vKGA==}
+    dev: false
+
   /lilconfig/2.0.6:
     resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
     engines: {node: '>=10'}
@@ -4664,6 +5008,11 @@ packages:
     dependencies:
       '@prisma/engines': 4.8.0
 
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
+    dev: false
+
   /prompts/2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
     engines: {node: '>= 6'}
@@ -4719,6 +5068,16 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-error-boundary/3.1.4_react@18.2.0:
+    resolution: {integrity: sha512-uM9uPzZJTF6wRQORmSrvOIgt4lJ9MC1sNgEOj2XGsDTRE4kmpWxg7ENK9EWNKJRMAOY9z0MuF4yIfl6gp4sotA==}
+    engines: {node: '>=10', npm: '>=6'}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      '@babel/runtime': 7.20.6
+      react: 18.2.0
     dev: false
 
   /react-hook-form/7.41.0_react@18.2.0:

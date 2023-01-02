@@ -5,6 +5,7 @@ import { useLeaveConfirm } from '~/lib/form';
 import { ButtonLink } from '~/components/button-link';
 import { Textarea } from '~/components/textarea';
 import { TextField } from '~/components/textfield';
+import Editor from '~/components/editor';
 
 type FormData = {
   title: string;
@@ -39,7 +40,12 @@ export default function QuestionForm({
     }
   }, [isSubmitSuccessful, reset, getValues]);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        // handleSubmit(onSubmit)
+      }}
+    >
       <div className="shadow sm:rounded-md sm:overflow-hidden">
         <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="grid grid-cols-3 gap-6">
@@ -56,13 +62,24 @@ export default function QuestionForm({
           </div>
 
           <div>
-            <Textarea
+            <label
+              // htmlFor={id || name}
+              className="block font-medium text-md text-gray-700"
+            >
+              What are the details of your problem?
+            </label>
+            <p className="text-sm text-gray-500">
+              Include all the information someone would need to answer your
+              question
+            </p>
+            {/* <Textarea
               {...register('content', { required: true })}
               label="Body"
               helperText="Include all the information someone would need to answer your question"
               rows={12}
               required
-            />
+            /> */}
+            <Editor />
           </div>
         </div>
         <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
