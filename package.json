@@ -38,7 +38,7 @@
     "@trpc/client": "^9.24.0",
     "@trpc/next": "^9.24.0",
     "@trpc/react": "^9.24.0",
-    "@trpc/server": "^9.24.0",
+    "@trpc/server": "^10.15.0",
     "clsx": "^1.1.1",
     "crypto-hash": "^2.0.1",
     "date-fns": "^2.28.0",
